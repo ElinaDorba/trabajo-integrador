@@ -15,6 +15,8 @@ header {
     justify-content: space-between;
     padding: 1rem;
     background-color: #E5DDC5;
+    position: relative;
+    z-index: 20;
 }
 
 /* estilo menu */
@@ -73,11 +75,16 @@ header {
         background-color: #B4B4B8;
         padding: 2rem;
         box-shadow: 0 0 0 100vmax rgba(0, 0, 0, .5);
+        transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        transform: translateX(100%);
+        z-index: 30;
     }
 
     .nav.visible {
         opacity: 1;
         visibility: visible;
+        transform: translateX(0);
+        height: 20rem;
     }
 
     .nav-list {
@@ -96,12 +103,57 @@ header {
     padding: 0px;
     width: 100%;
 }
-.main-index .container-index figure img{
+.slider {
+    position: relative;
+    overflow: hidden;
+    z-index: 10;
+
+}
+
+.slides {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.slide {
+    min-width: 100%;
+    overflow: hidden;
+}
+
+.slide img {
+    width: 100%;
+    height: auto;
+}
+
+.navigation {
+    position: absolute;
+    top: 50%;
     width: 100%;
     display: flex;
-    justify-content: center;
-    
+    justify-content: space-between;
+    transform: translateY(-50%);
+    padding: 0 10px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
 }
+
+.slider:hover .navigation {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+
+.prev,
+.next {
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 10px;
+    margin-right: 10px;
+}
+
+
 .mas-vendidos {
     margin: 0px;
     padding: 0px;
@@ -225,10 +277,17 @@ header {
 }
 .formulario-contacto {
     font-size: 0.9rem;
-    margin-top: 0px;
+    margin-top: 0;
     padding: 10px 20px 10px;
-    text-align: left;
-    line-height: 3rem;  
+    line-height: 3rem;
+}
+
+.nombre {
+    padding-right: 4.43px;
+}
+
+.email {
+    padding-right: 15.44px;
 }
 .formulario-contacto .form input[type="text"] {
     background-color: #F1EEDC;
@@ -253,6 +312,10 @@ header {
     background-color: #F1EEDC;
     border: none;
     padding: 5px;
+}
+.contenedor-btn-cont {
+    display: flex;
+    justify-content: space-evenly;
 }
 @media screen and (max-width: 800px) {
     .conteiner-contacto {
